@@ -17,19 +17,51 @@
             --border-color: #e3d2c3;
         }
         
-        body { font-family: 'Playfair Display', serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 0; line-height: 1.6; scroll-behavior: smooth; }
+        body { 
+            font-family: 'Playfair Display', serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-main); 
+            margin: 0; 
+            padding: 0; 
+            line-height: 1.6; 
+            scroll-behavior: smooth; 
+        }
 
         /* Bilingual Text Stacking styling */
-        .bilingual { display: flex; flex-direction: column; align-items: center; text-align: center; }
-        .bilingual .bn { font-family: 'Tiro Bangla', serif; font-size: 0.9em; color: var(--text-accent); margin-top: 4px; }
+        .bilingual { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            text-align: center; 
+        }
+        .bilingual .bn { 
+            font-family: 'Tiro Bangla', serif; 
+            font-size: 0.9em; 
+            color: var(--text-accent); 
+            margin-top: 4px; 
+        }
         .bilingual .en { font-weight: 600; }
 
         /* Top Navigation */
-        .top-nav { display: flex; justify-content: center; gap: 40px; padding: 15px; background: #fff; border-bottom: 1px solid var(--border-color); flex-wrap: wrap; }
+        .top-nav { 
+            display: flex; 
+            justify-content: center; 
+            gap: 40px; 
+            padding: 15px; 
+            background: #fff; 
+            border-bottom: 1px solid var(--border-color); 
+            flex-wrap: wrap; 
+        }
         .top-nav a { text-decoration: none; color: var(--text-main); }
 
         /* Header Area */
-        header { text-align: center; padding: 50px 20px; border-bottom: 1px solid var(--border-color); margin-bottom: 40px; background: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="%23e3d2c3"/></svg>'); }
+        header { 
+            text-align: center; 
+            padding: 50px 20px; 
+            border-bottom: 1px solid var(--border-color); 
+            margin-bottom: 40px; 
+            background: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="%23e3d2c3"/></svg>'); 
+        }
         header h1 { font-size: 2.2rem; margin: 0 0 15px 0; color: var(--text-main); }
         header p { font-size: 1.2rem; margin: 0 0 10px 0; }
         header small { color: var(--text-accent); font-style: italic; }
@@ -37,7 +69,17 @@
         /* Photo Grid */
         section { max-width: 1200px; margin: 0 auto 70px auto; padding: 0 20px; }
         .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
-        .photo-card { background: #fff; padding: 8px; border-radius: 4px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(92, 26, 27, 0.05); text-decoration: none; display: block; transition: transform 0.3s; cursor: pointer; }
+        .photo-card { 
+            background: #fff; 
+            padding: 8px; 
+            border-radius: 4px; 
+            border: 1px solid var(--border-color); 
+            box-shadow: 0 4px 15px rgba(92, 26, 27, 0.05); 
+            text-decoration: none; 
+            display: block; 
+            transition: transform 0.3s; 
+            cursor: pointer; 
+        }
         .photo-card:hover { transform: translateY(-5px); }
         .photo-card img { width: 100%; height: 250px; object-fit: cover; border-radius: 2px; background-color: #f0e9e1; }
 
@@ -48,21 +90,115 @@
         footer { text-align: center; padding: 30px 20px 40px 20px; background: #fff; border-top: 1px solid var(--border-color); }
 
         /* Lightbox */
-        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(253, 250, 246, 0.95); z-index: 999; justify-content: center; align-items: center; }
-        #lightbox img { max-width: 90%; max-height: 85%; border-radius: 4px; border: 8px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.15); transition: opacity 0.2s ease-in-out; }
+        #lightbox { 
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(253, 250, 246, 0.95); 
+            z-index: 999; 
+            justify-content: center; 
+            align-items: center; 
+        }
+        #lightbox img { 
+            max-width: 90%; 
+            max-height: 85%; 
+            border-radius: 4px; 
+            border: 8px solid #fff; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
+            transition: opacity 0.2s ease-in-out; 
+        }
         
         /* Lightbox Controls */
-        .close-btn { position: absolute; top: 15px; right: 25px; color: var(--text-main); font-size: 40px; text-decoration: none; font-weight: bold; cursor: pointer; z-index: 1001; }
-        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); font-size: 40px; color: var(--text-main); background: rgba(255,255,255,0.7); border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px; z-index: 1000; transition: 0.3s; }
-        .nav-btn:hover { background: #fff; }
+        .close-btn { 
+            position: absolute; 
+            top: 15px; 
+            right: 25px; 
+            color: var(--text-main); 
+            font-size: 40px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            cursor: pointer; 
+            z-index: 1001; 
+        }
+        .nav-btn { 
+            position: absolute; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            background: rgba(255, 255, 255, 0.4); 
+            backdrop-filter: blur(8px); 
+            -webkit-backdrop-filter: blur(8px); 
+            border: 1px solid rgba(255, 255, 255, 0.6); 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            cursor: pointer; 
+            z-index: 1000; 
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        }
+        .nav-btn:hover { 
+            background: rgba(255, 255, 255, 0.8); 
+            transform: translateY(-50%) scale(1.1); 
+        }
+        .nav-btn svg { width: 24px; height: 24px; fill: var(--text-main); }
         #prev-btn { left: 20px; }
         #next-btn { right: 20px; }
         
-        .download-btn { position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%); background: var(--text-main); color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 25px; font-size: 0.9rem; font-family: 'Playfair Display', serif; display: flex; gap: 8px; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: 0.3s; z-index: 1001; }
-        .download-btn:hover { background: var(--text-accent); }
+        /* Lightbox Action Buttons (Download & Share) */
+        .lightbox-actions {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 1001;
+        }
+        .action-btn { 
+            background: var(--text-main); 
+            color: #fff; 
+            padding: 10px 20px; 
+            text-decoration: none; 
+            border-radius: 25px; 
+            font-size: 0.9rem; 
+            font-family: 'Playfair Display', serif; 
+            display: flex; 
+            gap: 8px; 
+            align-items: center; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
+            transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+            border: none;
+            cursor: pointer;
+        }
+        .action-btn.icon-only { padding: 10px; border-radius: 50%; }
+        .action-btn:hover { background: var(--text-accent); transform: scale(1.05); }
+        .action-btn svg { width: 18px; height: 18px; fill: #fff; }
+        .action-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
 
         /* Back to Top Button */
-        #back-to-top { display: none; position: fixed; bottom: 30px; right: 30px; background: var(--text-main); color: white; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 24px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: 0.3s; z-index: 900; }
+        #back-to-top { 
+            display: none; 
+            position: fixed; 
+            bottom: 30px; 
+            right: 30px; 
+            background: var(--text-main); 
+            color: white; 
+            border: none; 
+            border-radius: 50%; 
+            width: 50px; 
+            height: 50px; 
+            font-size: 24px; 
+            cursor: pointer; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
+            transition: 0.3s; 
+            z-index: 900; 
+        }
         #back-to-top:hover { background: var(--text-accent); transform: translateY(-3px); }
 
     </style>
@@ -71,11 +207,11 @@
 
     <!-- Top Navigation -->
     <nav class="top-nav" id="top">
-        <a href="index.html" class="bilingual" style="border-bottom: 2px solid var(--text-accent);">
+        <a href="#" class="bilingual" style="border-bottom: 2px solid var(--text-accent);">
             <span class="en">Wedding</span>
             <span class="bn">বিবাহ</span>
         </a>
-        <a href="reception.html" class="bilingual">
+        <a href="#" class="bilingual">
             <span class="en">Reception</span>
             <span class="bn">প্রীতিভোজ</span>
         </a>
@@ -118,12 +254,26 @@
     <!-- Lightbox Viewer -->
     <div id="lightbox">
         <span class="close-btn" onclick="closeLightbox()">&times;</span>
-        <button class="nav-btn" id="prev-btn" onclick="changeImage(-1)">&#10094;</button>
+        <button class="nav-btn" id="prev-btn" onclick="changeImage(-1)">
+            <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
         <img id="lb-img" src="" alt="Full size photo">
-        <button class="nav-btn" id="next-btn" onclick="changeImage(1)">&#10095;</button>
-        <a id="lb-download" class="download-btn" href="#" target="_blank" download>
-            ↓ Download High-Res
-        </a>
+        <button class="nav-btn" id="next-btn" onclick="changeImage(1)">
+            <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+        </button>
+        
+        <div class="lightbox-actions">
+            <!-- Native File Share -->
+            <button id="lb-share-file" class="action-btn" title="Share Photo">
+                <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+                Share
+            </button>
+            <!-- Download -->
+            <a id="lb-download" class="action-btn" href="#" target="_blank" download>
+                <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                Download
+            </a>
+        </div>
     </div>
 
     <!-- Script to dynamically load images & handle logic -->
@@ -139,11 +289,13 @@
 
         async function loadGallery() {
             try {
+                // Fetch image IDs from Google Apps Script
                 const response = await fetch(API_URL);
                 allImageIds = await response.json();
                 
                 document.getElementById('loading-text').style.display = 'none';
                 
+                // Create 'Load More' button dynamically
                 const btnContainer = document.createElement('div');
                 btnContainer.style.textAlign = 'center';
                 btnContainer.style.marginTop = '30px';
@@ -235,6 +387,7 @@
             const id = allImageIds[currentLightboxIndex];
             const lbImg = document.getElementById('lb-img');
             const lbDownload = document.getElementById('lb-download');
+            const lbShareBtn = document.getElementById('lb-share-file');
             
             // Add slight fade effect
             lbImg.style.opacity = '0.5';
@@ -243,8 +396,59 @@
                 lbImg.style.opacity = '1';
             }, 150);
             
+            // Generate URL for sharing/downloading
+            const imgUrl = `https://drive.google.com/thumbnail?id=${id}&sz=w1000`;
+            
             // Set direct download link for Google Drive
             lbDownload.href = `https://drive.google.com/uc?export=download&id=${id}`;
+            
+            // Set Native Share button functionality with file fetching and fallback
+            lbShareBtn.onclick = async () => {
+                lbShareBtn.disabled = true;
+                const originalText = lbShareBtn.innerHTML;
+                lbShareBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 1 0 22 12A10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 8-8A8 8 0 0 1 12 20Z"/><path d="M12 6a1 1 0 0 0-1 1v5a1 1 0 0 0 .29.71l3 3a1 1 0 0 0 1.42-1.42L13 11.59V7a1 1 0 0 0-1-1Z"/></svg> Preparing...';
+                
+                try {
+                    // Attempt to fetch the image to share as an actual file
+                    const response = await fetch(imgUrl);
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    const blob = await response.blob();
+                    
+                    const fileName = `Tridib_Madhuri_Wedding_${id}.jpg`;
+                    const file = new File([blob], fileName, { type: blob.type || 'image/jpeg' });
+                    
+                    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                        await navigator.share({
+                            title: 'Wedding Gallery',
+                            text: 'Tridib & Madhuri\'s Wedding',
+                            files: [file]
+                        });
+                    } else {
+                        throw new Error('File sharing not supported on this device/browser');
+                    }
+                } catch (err) {
+                    console.warn('Could not share file (likely CORS or browser limits), falling back to link sharing:', err);
+                    
+                    // Fallback: Share just the link if fetching fails
+                    if (navigator.share) {
+                        try {
+                            await navigator.share({
+                                title: 'Wedding Gallery',
+                                text: 'Check out this photo from Tridib & Madhuri\'s Wedding Gallery!',
+                                url: imgUrl
+                            });
+                        } catch (linkErr) {
+                            console.log('Error sharing link:', linkErr);
+                        }
+                    } else {
+                        alert('Sharing is not supported on this device/browser. Please use the download button instead.');
+                    }
+                } finally {
+                    // Reset button state
+                    lbShareBtn.disabled = false;
+                    lbShareBtn.innerHTML = originalText;
+                }
+            };
         }
 
         /* Keyboard Navigation */
@@ -272,6 +476,7 @@
             window.scrollTo({top: 0, behavior: 'smooth'});
         };
 
+        // Initialize gallery fetch on window load
         window.onload = loadGallery;
     </script>
 </body>
