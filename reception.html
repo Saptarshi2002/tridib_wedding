@@ -101,10 +101,10 @@
         <img id="lb-img" src="" alt="Full size photo">
     </div>
 
-    <!-- Script to dynamically load images for the Reception folder -->
+    <!-- Script to dynamically load images in safe batches -->
     <script>
         // 1. Your NEW Master API URL
-        const BASE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby7PPb-2JXR8VttQf-ygcB__L1hPhytaJLOUV52Vx3fL0GM-eWJJg8pHhebv5YZ9YfE/exec";
+        const BASE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbztuy887NVJTDNv8ue4vnxCTIq309FRNDfavJs1ghsWXiJtwDtCLorbqQPe5fK8sPqP/exec";
         
         // 2. The ID extracted from the Reception Google Drive link
         const FOLDER_ID = "1WSnKMKyt9jGWVA9lZ25MBPkthN1cN9Pd"; 
@@ -112,38 +112,85 @@
         // 3. Combine them to tell the API to look in the new folder
         const API_URL = `${BASE_SCRIPT_URL}?folderId=${FOLDER_ID}`;
 
+        let allImageIds = [];
+        let currentIndex = 0;
+        const BATCH_SIZE = 20; // How many to load at once
+
         async function loadGallery() {
             try {
                 const response = await fetch(API_URL);
-                const imageIds = await response.json();
+                allImageIds = await response.json();
                 
-                const container = document.getElementById('gallery-container');
-                const loadingText = document.getElementById('loading-text');
+                document.getElementById('loading-text').style.display = 'none';
                 
-                loadingText.style.display = 'none';
+                // Add the Load More button to the page
+                const btnContainer = document.createElement('div');
+                btnContainer.style.textAlign = 'center';
+                btnContainer.style.marginTop = '30px';
+                btnContainer.style.gridColumn = '1 / -1';
+                
+                const loadMoreBtn = document.createElement('button');
+                loadMoreBtn.innerText = "Load More Photos";
+                loadMoreBtn.style.padding = "10px 25px";
+                loadMoreBtn.style.fontSize = "1rem";
+                loadMoreBtn.style.backgroundColor = "var(--text-main)";
+                loadMoreBtn.style.color = "#fff";
+                loadMoreBtn.style.border = "none";
+                loadMoreBtn.style.borderRadius = "5px";
+                loadMoreBtn.style.cursor = "pointer";
+                loadMoreBtn.style.fontFamily = "'Playfair Display', serif";
+                
+                loadMoreBtn.onclick = renderNextBatch;
+                
+                btnContainer.appendChild(loadMoreBtn);
+                document.getElementById('gallery-container').after(btnContainer);
 
-                imageIds.forEach(id => {
-                    const a = document.createElement('a');
-                    a.href = "#lightbox";
-                    a.className = "photo-card";
-                    a.onclick = () => {
-                        document.getElementById('lb-img').src = `https://drive.google.com/thumbnail?id=${id}&sz=w1000`;
-                    };
-
-                    const img = document.createElement('img');
-                    img.src = `https://drive.google.com/thumbnail?id=${id}&sz=w600`;
-                    img.alt = "Wedding Photo";
-                    img.loading = "lazy"; 
-
-                    a.appendChild(img);
-                    container.appendChild(a);
-                });
+                // Load the first batch immediately
+                renderNextBatch();
 
             } catch (error) {
                 console.error("Error fetching images:", error);
                 document.getElementById('loading-text').innerHTML = "Could not load images. Please try refreshing.<br>ছবিগুলি লোড করা যায়নি। অনুগ্রহ করে রিফ্রেশ করুন।";
             }
         }
+
+        function renderNextBatch() {
+            const container = document.getElementById('gallery-container');
+            
+            // Determine how many to load this round
+            const nextIndex = Math.min(currentIndex + BATCH_SIZE, allImageIds.length);
+            
+            for (let i = currentIndex; i < nextIndex; i++) {
+                const id = allImageIds[i];
+                
+                const a = document.createElement('a');
+                a.href = "#lightbox";
+                a.className = "photo-card";
+                a.onclick = () => {
+                    document.getElementById('lb-img').src = `https://drive.google.com/thumbnail?id=${id}&sz=w1000`;
+                };
+
+                const img = document.createElement('img');
+                img.src = `https://drive.google.com/thumbnail?id=${id}&sz=w600`;
+                img.alt = "Wedding Photo";
+                img.loading = "lazy"; 
+
+                a.appendChild(img);
+                container.appendChild(a);
+            }
+            
+            currentIndex = nextIndex;
+            
+            // Hide the button if we've loaded everything
+            if (currentIndex >= allImageIds.length) {
+                document.querySelector('button').style.display = 'none';
+            }
+        }
+
+        window.onload = loadGallery;
+    </script>
+</body>
+</html>
 
         window.onload = loadGallery;
     </script>
